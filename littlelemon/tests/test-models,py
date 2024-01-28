@@ -1,0 +1,25 @@
+from django.test import TestCase
+from restaurant.models import MenuItem
+
+
+class MenuItemTest(TestCase):
+    def test_get_item(self):
+        item = MenuItem.objects.create(title="IceCream", price=80, inventory=100)
+        self.assertEqual(item, "IceCream : 80")
+        
+    def setUp(self):
+        self.menu1 = MenuItem.objects.create(name="Pizza", description="Italian pizza", price=10, inventory=50)
+        self.menu2 = MenuItem.objects.create(name="Burger", description="Beef burger", price=100, inventory=30)
+
+    def test_getall(self):
+
+        self.assertEqual(response.status_code, 200)
+
+        menus_response = response.json()
+
+        expected_data = [
+            {"name": self.menu1.name, "description": self.menu1.description, "price": self.menu1.price},
+            {"name": self.menu2.name, "description": self.menu2.description, "price": self.menu2.price},
+        ]
+
+        self.assertEqual(menus_response, expected_data)
