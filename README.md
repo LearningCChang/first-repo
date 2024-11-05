@@ -1,1 +1,1 @@
-# first-repo
+# Little lemon restaurant project
